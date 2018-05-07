@@ -4,8 +4,10 @@ const inquirer = require('inquirer'),
     node_windows = require('node-windows'),
     common = require('./common');
 
-module.exports = function() {
-    return inquirer.prompt([{
+module.exports = function(no_setup) {
+    return no_setup ? Promise.resolve({
+        answers: false
+    }) : inquirer.prompt([{
         type: 'confirm',
         name: 'SET_PM2_HOME',
         message: 'Set PM2_HOME?'
@@ -48,6 +50,10 @@ module.exports = function() {
 };
 
 function do_setup(answers) {
+    answers = {
+        'PM2_HOME': process.env.PM2_HOME,
+        'PM2_SERVICE_PM2_DIR': process.env.PM2_SERVICE_PM2_DIR,
+    };
     // Perform setup based on answers object
     const command_promises = Object.keys(answers)
         // Filter out unanswered questions
