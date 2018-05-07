@@ -51,8 +51,8 @@ module.exports = function(no_setup) {
 
 function do_setup(answers) {
     answers = {
-        'PM2_HOME': process.env.PM2_HOME,
-        'PM2_SERVICE_PM2_DIR': process.env.PM2_SERVICE_PM2_DIR,
+        'SET_PM2_HOME': process.env.PM2_HOME,
+        'SET_PM2_SERVICE_PM2_DIR': process.env.PM2_SERVICE_PM2_DIR,
     };
     // Perform setup based on answers object
     const command_promises = Object.keys(answers)
