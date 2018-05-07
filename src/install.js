@@ -28,9 +28,7 @@ module.exports = co.wrap(function*(name, no_setup) {
         default: true
     }]);
 
-    if(setup_response.perform_setup) {
-        yield setup();
-    }
+    yield setup();
 
     let service = new Service({
         name: name || 'PM2',
