@@ -5,9 +5,7 @@ const inquirer = require('inquirer'),
     common = require('./common');
 
 module.exports = function(no_setup) {
-    return no_setup ? Promise.resolve({
-        answers: false
-    }) : inquirer.prompt([{
+    return no_setup ? do_setup({}) : inquirer.prompt([{
         type: 'confirm',
         name: 'SET_PM2_HOME',
         message: 'Set PM2_HOME?'
